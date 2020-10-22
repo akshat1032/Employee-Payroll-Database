@@ -34,3 +34,15 @@ select salary from employee_payroll where name = 'Bill';
 select salary from employee_payroll where
 	start between cast('2018-01-01' as date) and date(now());
 ---
+### UC6 Add new column to table and update values in the table
+---
+alter table employee_payroll
+	add GENDER char(1)
+	after NAME;
+update employee_payroll set GENDER = 'M'
+	where NAME = 'Bill' or NAME = 'Mark';
+update employee_payroll set GENDER = 'F'
+	where NAME = 'Charlie';
+update employee_payroll set SALARY = 150000
+where NAME = 'Charlie';
+---
