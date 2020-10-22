@@ -46,3 +46,26 @@ update employee_payroll set GENDER = 'F'
 update employee_payroll set SALARY = 150000
 where NAME = 'Charlie';
 ---
+### UC7 Perform addition average find minimum and maximum operation and counter operation
+---
+select sum(salary) from employee_payroll
+	where GENDER = 'M' group by GENDER;
+select sum(salary) from employee_payroll
+	where GENDER = 'F' group by GENDER;
+select avg(salary) from employee_payroll
+	where GENDER = 'M' group by GENDER;
+select avg(salary) from employee_payroll
+	where GENDER = 'F' group by GENDER;
+select max(salary) from employee_payroll
+	where GENDER = 'M' group by GENDER;
+select max(salary) from employee_payroll
+	where GENDER = 'F' group by GENDER;
+select min(salary) from employee_payroll
+	where GENDER = 'M' group by GENDER;
+select min(salary) from employee_payroll
+	where GENDER = 'F' group by GENDER;
+select count(name),gender from employee_payroll
+	where GENDER = 'M' group by GENDER;
+select count(name),gender from employee_payroll
+	where GENDER = 'F' group by GENDER;
+---
