@@ -24,3 +24,7 @@ insert into employee_payroll (NAME, SALARY, START) values
 ('Mark', 200000.0, '2019-11-13'),
 ('Charlie', 100000.0, '2020-05-12');
 ---
+### UC4 Retreive employee information from table
+---
+select * from employee_payroll;
+---
