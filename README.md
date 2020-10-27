@@ -83,3 +83,11 @@ alter table employee_payroll alter address set default 'TBD';
 ---
 update employee_payroll set address = default where name = 'Bill' or name = 'Mark' or name = 'Charlie';
 ---
+### UC9 Add payment information columns to the table
+---
+alter table employee_payroll rename column salary to basic_pay;
+alter table employee_payroll add deductions double after basic_pay;
+alter table employee_payroll add taxable_pay double after deductions;
+alter table employee_payroll add tax double after taxable_pay;
+alter table employee_payroll add net_pay double after tax;
+---
