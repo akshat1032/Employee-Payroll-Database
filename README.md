@@ -69,3 +69,17 @@ select count(name),gender from employee_payroll
 select count(name),gender from employee_payroll
 	where GENDER = 'F' group by GENDER;
 ---
+### UC8 Add new columns address, phone number and department to table
+##### Altering the table
+---
+alter table employee_payroll add PHONE varchar(250) after name;
+alter table employee_payroll add DEPARTMENT varchar(250) not null after address;
+---
+##### setting default value for address field
+---
+alter table employee_payroll alter address set default 'TBD';
+---
+##### setting address with default value for all entries
+---
+update employee_payroll set address = default where name = 'Bill' or name = 'Mark' or name = 'Charlie';
+---
