@@ -25,11 +25,18 @@ DROP TABLE IF EXISTS `employee_payroll`;
 CREATE TABLE `employee_payroll` (
   `ID` int unsigned NOT NULL AUTO_INCREMENT,
   `NAME` varchar(150) NOT NULL,
+  `PHONE` varchar(250) DEFAULT NULL,
+  `address` varchar(150) DEFAULT 'TBD',
+  `DEPARTMENT` varchar(250) NOT NULL,
   `GENDER` char(1) DEFAULT NULL,
-  `SALARY` double NOT NULL,
+  `basic_pay` double NOT NULL,
+  `deductions` double DEFAULT NULL,
+  `taxable_pay` double DEFAULT NULL,
+  `tax` double DEFAULT NULL,
+  `net_pay` double DEFAULT NULL,
   `START` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +45,7 @@ CREATE TABLE `employee_payroll` (
 
 LOCK TABLES `employee_payroll` WRITE;
 /*!40000 ALTER TABLE `employee_payroll` DISABLE KEYS */;
-INSERT INTO `employee_payroll` VALUES (1,'Bill','M',100000,'2018-01-03'),(2,'Mark','M',200000,'2019-11-13'),(3,'Charlie','F',150000,'2020-05-12');
+INSERT INTO `employee_payroll` VALUES (1,'Bill',NULL,'TBD','','M',100000,NULL,NULL,NULL,NULL,'2018-01-03'),(2,'Mark',NULL,'TBD','','M',200000,NULL,NULL,NULL,NULL,'2019-11-13'),(3,'Charlie',NULL,'TBD','','F',150000,NULL,NULL,NULL,NULL,'2020-05-12'),(5,'Terissa',NULL,'TBD','Sales','F',300000,NULL,NULL,NULL,NULL,'2019-11-13'),(6,'Terissa',NULL,'TBD','Marketing','F',300000,100000,200000,50000,150000,'2018-01-05');
 /*!40000 ALTER TABLE `employee_payroll` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-24 11:52:09
+-- Dump completed on 2020-10-27 20:37:09
