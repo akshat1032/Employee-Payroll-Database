@@ -91,3 +91,9 @@ alter table employee_payroll add taxable_pay double after deductions;
 alter table employee_payroll add tax double after taxable_pay;
 alter table employee_payroll add net_pay double after tax;
 ---
+### UC10.1 Ability to make employee as part of two departments
+---
+update employee_payroll set department = 'Sales' where name = 'Terissa';
+insert into employee_payroll (NAME, DEPARTMENT, GENDER, basic_pay, deductions, taxable_pay, tax, net_pay, START) values
+    -> ('Terissa','Marketing','F','300000','100000','200000','50000','150000','2018-01-05');
+---
