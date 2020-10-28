@@ -97,3 +97,47 @@ update employee_payroll set department = 'Sales' where name = 'Terissa';
 insert into employee_payroll (NAME, DEPARTMENT, GENDER, basic_pay, deductions, taxable_pay, tax, net_pay, START) values
     -> ('Terissa','Marketing','F','300000','100000','200000','50000','150000','2018-01-05');
 ---
+### UC11 Implementing ER Diagram to Employee Payroll
+##### Create company table
+---
+create table Company(
+    -> Company_Id int not null,
+    -> Company_name varchar(300) not null,
+    -> primary key(Company_Id))engine=InnoDB;
+---
+##### Create employee table
+---
+create table Employee(
+    -> ID int unsigned not null auto_increment primary key,
+    -> Company_Id int not null,
+    -> Name varchar(150) not null,
+    -> Address varchar(300),
+    -> Gender varchar(1),
+    -> Phone varchar(250),
+    -> foreign key(Company_Id) references Company(Company_Id))engine=InnoDB;
+---
+##### Create payroll table
+---
+create table Payroll(
+    -> ID int unsigned not null auto_increment primary key,
+    -> foreign key(ID) references Employee(ID),
+    -> basic_pay double not null,
+    -> deductions double not null,
+    -> taxable_pay double not null,
+    -> tax double not null,
+    -> net_pay double not null)engine=InnoDB;
+---
+##### Create department table
+---
+create table Department(
+    -> Department_Id int not null primary key,
+    -> Department_name varchar(250) not null)engine=InnoDB;
+---
+##### Create employee-department table
+---
+create table employee_department(
+    -> ID int unsigned not null auto_increment,
+    -> foreign key(ID) references Employee(ID),
+    -> Department_Id int not null,
+    -> foreign key(Department_Id) references Department(Department_Id))engine=InnoDB;
+---
