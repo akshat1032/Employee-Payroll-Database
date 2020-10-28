@@ -141,3 +141,70 @@ create table employee_department(
     -> Department_Id int not null,
     -> foreign key(Department_Id) references Department(Department_Id))engine=InnoDB;
 ---
+### UC12 Checking if queries work after implementing ER Diagram
+##### insert values to tables
+---
+insert into Company values
+    -> (1,'Company1'),
+    -> (2,'Company2'),
+    -> (3,'Company3');
+---
+---
+insert into Employee values
+    -> (101,1,'Ram','Kunjvihar','M','956789'),
+    -> (102,1,'Shyam','Mirzapur','M','4456789'),
+    -> (103,2,'Munna','Jaunpur','M','9586789'),
+    -> (104,2,'Golu','Delhi','F','4786789'),
+    -> (105,3,'Sharad','Mumbai','M','3986789'),
+    -> (106,3,'Lovely','Kashi','F','2586789');
+---
+---
+insert into Payroll values
+    -> (101,30000,1000,29000,1000,28000),
+    -> (102,32000,2000,30000,2000,28000),
+    -> (103,35000,3000,33000,3000,30000),
+    -> (104,38000,4000,34000,4000,30000),
+    -> (105,40000,5000,35000,4000,31000),
+    -> (106,45000,5000,40000,5000,35000);
+---
+---
+insert into Department values
+    -> (1001,'Sales'),
+    -> (1002,'Marketing'),
+    -> (1003,'Purchase'),
+    -> (1004,'Research');
+---
+---
+INSERT INTO employee_department VALUES
+    -> (101,1001),
+    -> (101,1002),
+    -> (103,1004),
+    -> (104,1004),
+    -> (105,1003),
+    -> (102,1003),
+    -> (106,1001);
+---
+##### Total salary by gender
+---
+select sum(payroll.net_pay),employee.gender from employee
+    -> left join payroll
+    -> on payroll.ID=employee.ID group by employee.gender;
+---
+##### Average salary by gender
+---
+select avg(payroll.net_pay),employee.gender from employee
+    -> left join payroll
+    -> on payroll.ID=employee.ID group by employee.gender;
+---
+##### Minimum and maximum salary by gender
+---
+select min(payroll.net_pay),max(payroll.net_pay),employee.gender from employee
+    -> left join payroll
+    -> on payroll.ID=employee.ID group by employee.gender;
+---
+##### Count of employees by gender
+---
+select count(payroll.net_pay),employee.gender from employee
+    -> left join payroll
+    -> on payroll.ID = employee.Id group by employee.gender;
+---
